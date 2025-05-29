@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         botondeinicio.setOnClickListener {
             //Ventana emergente al hacer click en el boton
+            //O por lo menos eso deberia salir
 
 
         }
