@@ -1,5 +1,6 @@
 package com.example.pruebas
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         //Declarando variables con los botones
         val botondesalir = findViewById<Button>(R.id.botonsalir)
         val botondeinicio = findViewById<Button>(R.id.botoninicio)
+        val botonadmin = findViewById<Button>(R.id.botonadmin)
 
         //Funcion de los botones
         botondesalir.setOnClickListener {
@@ -31,8 +33,16 @@ class MainActivity : AppCompatActivity() {
         botondeinicio.setOnClickListener {
             //Ventana emergente al hacer click en el boton
             //O por lo menos eso deberia salir
+            val intent = Intent(MainActivity@this, mainscreen::class.java)
+            startActivity(intent)
 
+        }
 
+        botonadmin.setOnClickListener {
+            //Ventana emergente al hacer click en el boton
+            //O por lo menos eso deberia salir
+            val intent = Intent(MainActivity@this, AdminScreen::class.java)
+            startActivity(intent)
         }
 
 
