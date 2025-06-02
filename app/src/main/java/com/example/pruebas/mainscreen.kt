@@ -39,8 +39,8 @@ class mainscreen : AppCompatActivity() {
 
         botonSumar.setOnClickListener {
             val operaciones = Operaciones()
-            val num1 = caja1.text.toString().toIntOrNull()
-            val num2 = caja2.text.toString().toIntOrNull()
+            val num1 = caja1.text.toString().toFloatOrNull()
+            val num2 = caja2.text.toString().toFloatOrNull()
 
             if (num1 != null && num2 != null) {
                 val suma = Operaciones().suma(num1, num2)
@@ -52,8 +52,8 @@ class mainscreen : AppCompatActivity() {
 
         botonRestar.setOnClickListener {
             val operaciones = Operaciones()
-            val num1 = caja1.text.toString().toIntOrNull()
-            val num2 = caja2.text.toString().toIntOrNull()
+            val num1 = caja1.text.toString().toFloatOrNull()
+            val num2 = caja2.text.toString().toFloatOrNull()
 
             if (num1 != null && num2 != null) {
                 val resta = Operaciones().resta(num1, num2)
@@ -65,8 +65,8 @@ class mainscreen : AppCompatActivity() {
 
         botonMultiplicar.setOnClickListener {
             val operaciones = Operaciones()
-            val num1 = caja1.text.toString().toIntOrNull()
-            val num2 = caja2.text.toString().toIntOrNull()
+            val num1 = caja1.text.toString().toFloatOrNull()
+            val num2 = caja2.text.toString().toFloatOrNull()
 
             if (num1 != null && num2 != null) {
                 val multiplicacion = Operaciones().multiplicacion(num1, num2)
@@ -78,8 +78,8 @@ class mainscreen : AppCompatActivity() {
 
         botonDividir.setOnClickListener {
             val operaciones = Operaciones()
-            val num1 = caja1.text.toString().toIntOrNull()
-            val num2 = caja2.text.toString().toIntOrNull()
+            val num1 = caja1.text.toString().toFloatOrNull()
+            val num2 = caja2.text.toString().toFloatOrNull()
 
             if (num1 != null && num2 != null) {
                 try {

@@ -1,17 +1,17 @@
 package com.example.pruebas
 
 class Operaciones {
-    fun suma(a: Int, b: Int): Int {
+    fun suma(a: Float, b: Float): Float {
         return a+b
     }
-    fun resta(a: Int, b: Int): Int {
+    fun resta(a: Float, b: Float): Float {
         return a-b
     }
-    fun multiplicacion(a: Int, b: Int): Int {
+    fun multiplicacion(a: Float, b: Float): Float {
         return a*b
     }
-    fun division(a: Int, b: Int): Int {
-        if (b == 0) {
+    fun division(a: Float, b: Float): Float {
+        if (b <= 0) {
             throw IllegalArgumentException("No se puede dividir entre cero")
         }
         return a / b
