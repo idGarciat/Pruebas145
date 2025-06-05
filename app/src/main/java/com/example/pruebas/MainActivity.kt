@@ -23,11 +23,14 @@ class MainActivity : AppCompatActivity() {
         val botondesalir = findViewById<Button>(R.id.botonsalir)
         val botondeinicio = findViewById<Button>(R.id.botoninicio)
         val botonadmin = findViewById<Button>(R.id.botonadmin)
+        val botonmapa = findViewById<Button>(R.id.botonmapa)
 
         //Funcion de los botones
         botondesalir.setOnClickListener {
             botondesalir.text = "Adios"
             finish()
+            //Cierra la aplicacion
+
         }
 
         botondeinicio.setOnClickListener {
@@ -44,6 +47,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(MainActivity@this, AdminScreen::class.java)
             startActivity(intent)
         }
+
+        botonmapa.setOnClickListener {
+            //Ventana emergente al hacer click en el boton
+            //O por lo menos eso deberia salir
+            val intent = Intent(MainActivity@this, MapsActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 
