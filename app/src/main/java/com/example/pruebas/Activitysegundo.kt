@@ -90,7 +90,7 @@ class Activitysegundo : AppCompatActivity() {
 
     private fun getData(textViewR: TextView) {
         val apiService = REST.getRestEngine().create(ApiService::class.java) // ← nombre corregido
-        val call = apiService.obtenerProductos() // ← método que debe existir en ApiService.kt
+        val call = apiService.obtenerProductos() // ← metodo que debe existir en ApiService.kt
 
         call.enqueue(object : retrofit2.Callback<List<DatosRespuesta>> {
             override fun onResponse(
