@@ -1,9 +1,12 @@
 package com.example.pruebas
 
 import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.RequiresPermission
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -12,11 +15,26 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.pruebas.databinding.ActivityMapsBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+
+
+import android.os.Looper
+
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var locationCallback: LocationCallback
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,10 +42,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
+
+
     }
 
     /**
@@ -43,9 +59,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-//        val sydney = LatLng(-34.0, 151.0)
-//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 
         val sucre = LatLng(-19.0333, -65.2627)
         mMap.addMarker(MarkerOptions().position(sucre).title("Marcador en Sucre"))
@@ -74,6 +87,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val pando = LatLng(-10.5000, -66.0000)
         mMap.addMarker(MarkerOptions().position(pando).title("Marcador en Pando"))
 
+        val casita = LatLng(-17.7833, -63.1825)
+        mMap.addMarker(MarkerOptions().position(casita).title("Marcador en mi casita"))
+
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sucre))
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15f))
@@ -82,8 +98,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
 
-
+        mMap.isMyLocationEnabled = true
 
 
     }
+
 }

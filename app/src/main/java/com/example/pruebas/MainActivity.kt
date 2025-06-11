@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         val botondeinicio = findViewById<Button>(R.id.botoninicio)
         val botonadmin = findViewById<Button>(R.id.botonadmin)
         val botonmapa = findViewById<Button>(R.id.botonmapa)
+        val botonsegundo = findViewById<Button>(R.id.botonactivitysegundo)
+
+
 
         //Funcion de los botones
         botondesalir.setOnClickListener {
@@ -52,6 +55,13 @@ class MainActivity : AppCompatActivity() {
             //Ventana emergente al hacer click en el boton
             //O por lo menos eso deberia salir
             val intent = Intent(MainActivity@this, MapsActivity::class.java)
+            startActivity(intent)
+        }
+
+        botonsegundo.setOnClickListener {
+            //Ventana emergente al hacer click en el boton
+            //O por lo menos eso deberia salir
+            val intent = Intent(MainActivity@this, Activitysegundo::class.java)
             startActivity(intent)
         }
 
