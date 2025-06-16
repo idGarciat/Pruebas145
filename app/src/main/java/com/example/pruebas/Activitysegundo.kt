@@ -2,6 +2,7 @@ package com.example.pruebas
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -86,6 +87,7 @@ class Activitysegundo : AppCompatActivity() {
 //        })
 //    }
 
+    //val imageView: ImageView = findViewById(R.id.imageViewProducto)
 
 
     private fun getData(textViewR: TextView) {
@@ -101,9 +103,21 @@ class Activitysegundo : AppCompatActivity() {
                     val productos = response.body()
                     val texto = StringBuilder()
                     productos?.forEach {
-                        texto.append("ID: ${it.id_producto}, Nombre: ${it.nombre}, Precio: ${it.precio}\n")
+                        texto.append(
+                            """
+        ID: ${it.id_producto}
+        Nombre: ${it.nombre}
+        Descripción: ${it.descripcion}
+        Precio: ${it.precio}
+        Imagen: ${it.imagen}
+        Stock: ${it.stock}
+        Categoría: ${it.categoria}
+        
+        """.trimIndent()
+                        )
                     }
                     textViewR.text = texto.toString()
+
                     Log.d("Activitysegundo", "Productos recuperados: $productos")
                 } else {
                     textViewR.text = "Error en la respuesta: ${response.code()}"

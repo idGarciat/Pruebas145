@@ -32,15 +32,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
 
 
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var locationCallback: LocationCallback
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
 
 
 
@@ -98,9 +100,41 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
 
-        mMap.isMyLocationEnabled = true
+        //mMap.isMyLocationEnabled = true
+
+
+        checkLocationPermission() // Verifica y solicita permisos de ubicación
+        enableUserLocation() // Habilita la ubicación del usuario en el mapa
+
 
 
     }
+    private fun enableUserLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            mMap.isMyLocationEnabled = true
+        }
+    }
+
+    private val LOCATION_PERMISSION_REQUEST = 1
+
+    private fun checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST
+            )
+        } else {
+            enableUserLocation()
+        }
+    }
+
+
 
 }
